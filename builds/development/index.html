@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="css/anotherstyle.css">
 </head>
 <body>
+<h1>Array operations with underscore</h1>
+<h3 id="numstudents">Using without(), union(), intersection(), difference():</h3>
+
 <div id="container">
 
 </div>
@@ -14,15 +17,29 @@
 <script src="js/lib/underscore.js"></script>
 <script src="SampleData.js"></script>
 <script>
-    function getStudentInfo(elem, indx, list) {
-        var container = document.getElementById("container");
-        var student = "<p>" + elem.firstname + " " + elem.lastname + ", Grade: " + elem.grade + "</p>";
-        container.innerHTML = container.innerHTML + student;
-    }
-
     window.addEventListener("load", function (e) {
-        
+        var container = document.getElementById("container");
+        var array1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var array2 = ["A", "B", "C", "D", "F", "G", "H", "I", "J"];
+        var array3 = [2, 4, 6, 8, 10, 12, 14];
 
+        //use without() to remove unwated values from the array
+        var result = "<p>Without(): " + _.without(array1,0,2,3) + "</p>";
+        container.innerHTML = container.innerHTML + result;
+        result = "<p>" + _.without(array2, "A", "E", "I", "O", "U") + "</p>";
+        container.innerHTML = container.innerHTML + result;
+
+        //use the union() function to jion two arrays together
+        result = "<p>union(): " + _.union(array1, array2) + "</p>";
+        container.innerHTML = container.innerHTML + result;
+
+        //use the intersection() function to see what's common to both arrays
+        result = "<p>intersection(): " + _.intersection(array1, array3) + "</p>";
+        container.innerHTML = container.innerHTML + result;
+
+        //the difference() function shows values not present in other array
+        result = "<p>differect(): " + _.difference(array1, array3) + "</p>";
+        container.innerHTML = container.innerHTML + result;
     });
 </script>
 </body>
